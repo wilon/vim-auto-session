@@ -4,7 +4,7 @@
 " Author:        Weilong Wang <github.com/wilon>
 " =============================================================================
 
-" sessiondir config
+" Sessiondir config.
 if !exists('g:sessiondir')
     let g:sessiondir = $HOME . "/.vim/sessions"
 endif
@@ -12,12 +12,13 @@ endif
 if !exists('g:sessionfile')
     let b:file = expand('%:p')
     if empty(b:file)
-        let b:filename = getcwd()
+        let b:filename = getcwd() . '/'
     else
         let b:filename = expand('%:p')
     endif
     let g:sessionfile = g:sessiondir . '/' . substitute(b:filename, '/', '_', 'g') . '.vim'
 endif
 
-au VimEnter * nested :call session#LoadSession()
+" Auto make and load.
 au VimLeave * :call session#MakeSession()
+au VimEnter * nested :call session#LoadSession()

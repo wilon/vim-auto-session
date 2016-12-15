@@ -12,6 +12,7 @@ function! session#MakeSession()
         exe 'silent !mkdir -p ' g:sessiondir
         redraw!
     endif
+    let g:netrw_liststyle = 1
     exe "mksession! " . g:sessionfile
 endfunction
 
